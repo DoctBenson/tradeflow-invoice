@@ -1,0 +1,241 @@
+/* ====================== GLOBAL STYLES ====================== */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 20px;
+}
+
+/* ====================== TASK 1: Center Invoice ====================== */
+.invoice-container {
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* ====================== TASK 2: Invoice Header ====================== */
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 4px solid #2563eb;
+  padding-bottom: 25px;
+  margin-bottom: 30px;
+}
+
+.business-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.04em;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin: 0;
+}
+
+.invoice-details {
+  text-align: right;
+}
+
+.invoice-details h2 {
+  margin: 0 0 10px 0;
+  color: #1f2937;
+  font-size: 1.6rem;
+}
+
+.client-info p {
+  margin: 4px 0;
+  color: #4b5563;
+}
+
+/* ====================== TASK 3: Table Styling ====================== */
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.invoice-table th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: #374151;
+}
+
+.invoice-table .qty,
+.invoice-table .price,
+.invoice-table .total {
+  text-align: right;
+}
+
+/* Alternating row colors */
+.invoice-table tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+/* Editable text style */
+.editable {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.editable:hover {
+  background-color: #e0f2fe;
+}
+
+/* Input styling inside table */
+.invoice-table input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 2px solid #3b82f6;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* ====================== TASK 4: Buttons ====================== */
+.add-item-btn {
+  margin-top: 15px;
+  padding: 12px 24px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-item-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Delete Button */
+.delete-btn {
+  padding: 6px 14px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Done Button (for future use) */
+.done-btn {
+  padding: 6px 14px;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ====================== TASK 5: Grand Total ====================== */
+.grand-total-row {
+  background-color: #1e40af !important;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.grand-total-row .label,
+.grand-total-row .amount {
+  font-weight: 700;
+  padding: 18px 12px !important;
+}
+
+/* ====================== Totals Section ====================== */
+.totals-table {
+  width: 100%;
+  max-width: 420px;
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+.totals-table td {
+  padding: 12px 0;
+}
+
+.totals-table .label {
+  text-align: right;
+  padding-right: 40px;
+  font-weight: 500;
+}
+
+.totals-table .amount {
+  text-align: right;
+  font-weight: 600;
+  width: 160px;
+}
+
+
+.pay-btn {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  margin: 30px auto 0;
+  padding: 16px 24px;
+  background-color: #2563eb;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+@media (max-width: 600px) {
+  .totals-table {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .totals-table .label {
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .invoice-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .delete-btn {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+}
