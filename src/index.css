@@ -217,6 +217,25 @@ body {
 }
 
 @media (max-width: 600px) {
+  .invoice-container {
+    padding: 16px;
+    margin: 10px;
+    border-radius: 8px;
+  }
+
+  .invoice-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .invoice-details {
+    text-align: left;
+  }
+
+  .business-name {
+    font-size: 1.6rem;
+  }
+
   .totals-table {
     max-width: 100%;
     width: 100%;
@@ -225,17 +244,9 @@ body {
   .totals-table .label {
     padding-right: 16px;
   }
-}
 
-@media (max-width: 600px) {
   .invoice-table {
     display: block;
     overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .delete-btn {
-    padding: 4px 8px;
-    font-size: 0.75rem;
   }
 }
