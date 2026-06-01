@@ -49,6 +49,13 @@ function exportPDF() {
   html2pdf().set(options).from(element).save();
 }
 
+const [invoiceNumber, setInvoiceNumber] = useState(() => {
+  const saved = localStorage.getItem('invoiceCount')
+  const count = saved ? parseInt(saved) + 1 : 1
+  localStorage.setItem('invoiceCount', count)
+  return `INV-2026-${String(count).padStart(3, '0')}`
+})
+
 
     
 
@@ -62,7 +69,7 @@ function exportPDF() {
       <InvoiceHeader
         businessName={businessName}
         onBusinessNameChange={setBusinessName}
-        invoiceNumber="123456789"
+        invoiceNumber={invoiceNumber}
         clientName="Benson Daniel"
         date="2026-05-27"
         dueDate="2026-06-29"
