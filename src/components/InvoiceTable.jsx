@@ -6,7 +6,8 @@ function InvoiceTable({
   onRemoveItem,
   editingId,
   setEditingId,
-  onUpdateItem 
+  onUpdateItem,
+  currency
 }) {
 
   return (
@@ -85,14 +86,14 @@ function InvoiceTable({
                       onClick={() => setEditingId(item.id)}
                       className="editable"
                     >
-                      ${item.price.toFixed(2)}
+                      {currency} {item.price.toFixed(2)}
                     </span>
                   )}
                 </td>
 
                 {/* Total */}
                 <td className="total">
-                  ${rowTotal.toFixed(2)}
+                  {currency} {rowTotal.toFixed(2)}
                 </td>
 
                 {/* Delete Button */}

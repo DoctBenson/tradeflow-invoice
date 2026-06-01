@@ -312,3 +312,15 @@ body {
 .client-info span[contenteditable]:hover {
   background-color: #e0f2fe;
 }
+
+
+.currency-select {
+  display: block;
+  margin: 0 auto 16px;
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: white;
+}

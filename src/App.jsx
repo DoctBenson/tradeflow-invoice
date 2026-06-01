@@ -58,12 +58,24 @@ const [invoiceNumber, setInvoiceNumber] = useState(() => {
 const [clientName, setClientName] = useState('Client Name')
 const [date, setDate] = useState(new Date().toISOString().split('T')[0])  
 const [dueDate, setDueDate] = useState('')
+const [currency, setCurrency] = useState('$')
  
 return (
   <>
     <button onClick={exportPDF} className="export-btn">
       Download PDF
     </button>
+
+    <select
+      value={currency}
+      onChange={e => setCurrency(e.target.value)}
+      className="currency-select"
+    >
+    <option value="$">USD ($)</option>
+    <option value="€">EUR (€)</option>
+    <option value="£">GBP (£)</option>
+    <option value="₵">GHS (₵)</option>
+   </select>
 
     <div className="invoice-container" id="invoice-document">
       <InvoiceHeader
@@ -85,9 +97,10 @@ return (
         editingId={editingId}
         setEditingId={setEditingId}
         onUpdateItem={updateItem}
+        currency={currency}
       />
       
-      <InvoiceFooter lineItems={lineItems} />
+      <InvoiceFooter lineItems={lineItems} currency={currency} />
     </div>
   </>
 )
