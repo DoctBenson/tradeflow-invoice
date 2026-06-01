@@ -252,6 +252,23 @@ body {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
+
+  .invoice-table th,
+  .invoice-table td {
+    padding: 8px 6px;
+    font-size: 0.75rem;
+  }
+
+  .delete-btn {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+
+  .invoice-table .qty,
+  .invoice-table .price,
+  .invoice-table .total {
+    white-space: nowrap;
+  }
 }
 
 .export-btn {
