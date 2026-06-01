@@ -12,7 +12,6 @@ function App() {
   ])
 
   const [editingId, setEditingId] = useState(null)
-
   const [businessName, setBusinessName] = useState('Your Business Name')
 
   function removeItem(id) {
@@ -56,10 +55,11 @@ const [invoiceNumber, setInvoiceNumber] = useState(() => {
   return `INV-2026-${String(count).padStart(3, '0')}`
 })
 
-
-    
-
- return (
+const [clientName, setClientName] = useState('Client Name')
+const [date, setDate] = useState(new Date().toISOString().split('T')[0])  
+const [dueDate, setDueDate] = useState('')
+ 
+return (
   <>
     <button onClick={exportPDF} className="export-btn">
       Download PDF
@@ -70,9 +70,12 @@ const [invoiceNumber, setInvoiceNumber] = useState(() => {
         businessName={businessName}
         onBusinessNameChange={setBusinessName}
         invoiceNumber={invoiceNumber}
-        clientName="Benson Daniel"
-        date="2026-05-27"
-        dueDate="2026-06-29"
+        clientName={clientName}
+        onClientNameChange={setClientName}
+        date={date}
+        onDateChange={setDate}
+        dueDate={dueDate}
+        onDueDateChange={setDueDate}
       />
       
       <InvoiceTable 

@@ -273,3 +273,25 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
+
+.client-info span[contenteditable] {
+  display: inline-block;
+  min-width: 120px;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.business-name[contenteditable]:empty:before {
+  content: 'Your Business Name';
+  color: #9ca3af;
+  cursor: text;
+}
+
+.business-name[contenteditable]:hover {
+  background-color: transparent;
+}
+
+.client-info span[contenteditable]:hover {
+  background-color: #e0f2fe;
+}
