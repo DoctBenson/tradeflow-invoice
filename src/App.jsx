@@ -3,7 +3,7 @@ import InvoiceHeader from './components/InvoiceHeader'
 import InvoiceTable from './components/InvoiceTable'
 import LineItem from './components/LineItem'
 import InvoiceFooter from './components/InvoiceFooter'
-
+import html2pdf from 'html2pdf.js'
 function App() {
   const [lineItems, setLineItems] = useState([
     { id: 1, description: 'Product A', qty: 2, price: 200 },
@@ -36,15 +36,36 @@ function updateItem(id, field, value) {
     ));
   }
 
-  return (
-    <div className="invoice-container">
+function exportPDF() {
+  const element = document.getElementById('invoice-document');
+  const options = { 
+    margin: 10,
+    filename: 'tradeflow-invoice.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+  
+  html2pdf().set(options).from(element).save();
+}
+
+
+    
+
+ return (
+  <>
+    <button onClick={exportPDF} className="export-btn">
+      Download PDF
+    </button>
+
+    <div className="invoice-container" id="invoice-document">
       <InvoiceHeader
-       businessName={businessName}
-       onBusinessNameChange={setBusinessName}
-       invoiceNumber="123456789"
-       clientName="Benson Daniel"
-       date="2026-05-27"
-       dueDate="2026-06-29"
+        businessName={businessName}
+        onBusinessNameChange={setBusinessName}
+        invoiceNumber="123456789"
+        clientName="Benson Daniel"
+        date="2026-05-27"
+        dueDate="2026-06-29"
       />
       
       <InvoiceTable 
@@ -58,7 +79,8 @@ function updateItem(id, field, value) {
       
       <InvoiceFooter lineItems={lineItems} />
     </div>
-  )
+  </>
+)
 }
 
 export default App
