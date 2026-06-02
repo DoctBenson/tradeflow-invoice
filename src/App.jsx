@@ -48,7 +48,8 @@ function exportPDF() {
   html2pdf().set(options).from(element).save();
 }
 
-const [invoiceNumber, setInvoiceNumber] = useState(() => {
+  const [status,setStatus] = useState('UNPAID')
+  const [invoiceNumber, setInvoiceNumber] = useState(() => {
   const saved = localStorage.getItem('invoiceCount')
   const count = saved ? parseInt(saved) + 1 : 1
   localStorage.setItem('invoiceCount', count)
@@ -77,6 +78,19 @@ return (
     <option value="₵">GHS (₵)</option>
    </select>
 
+    <div className="status-bar">
+      {['UNPAID', 'PAID', 'OVERDUE'].map(s => (
+        <button
+          key={s}
+          onClick={() => setStatus(s)}
+          className={`status-btn ${status === s ? `status-btn--${s.toLowerCase()}` : ''}`}
+        >
+          {s}
+        </button>
+      ))}
+
+    </div>
+
     <div className="invoice-container" id="invoice-document">
       <InvoiceHeader
         businessName={businessName}
@@ -88,6 +102,7 @@ return (
         onDateChange={setDate}
         dueDate={dueDate}
         onDueDateChange={setDueDate}
+        status={status}
       />
       
       <InvoiceTable 

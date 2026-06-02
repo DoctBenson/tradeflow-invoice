@@ -1,8 +1,14 @@
 import React from 'react';
 
-function InvoiceHeader({ businessName, onBusinessNameChange, invoiceNumber, clientName, onClientNameChange, date, onDateChange, dueDate, onDueDateChange }) {
+function InvoiceHeader({ businessName, onBusinessNameChange, invoiceNumber, clientName, onClientNameChange, date, onDateChange, dueDate, onDueDateChange, status }) {
   return (
     <header className="invoice-header">
+
+      <div className={`invoice-stamp stamp--${status.toLowerCase()}`}>
+        {status}
+
+      </div>
+
       <div className="business-info">
         <h1
           className="business-name editable"
