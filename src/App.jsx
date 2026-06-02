@@ -13,7 +13,7 @@ function App() {
 
   const [editingId, setEditingId] = useState(null)
   const [businessName, setBusinessName] = useState('Your Business Name')
-
+  
   function removeItem(id) {
   setLineItems(lineItems.filter(item => item.id !== id))
 }
@@ -60,7 +60,7 @@ const [clientName, setClientName] = useState('Client Name')
 const [date, setDate] = useState(new Date().toISOString().split('T')[0])  
 const [dueDate, setDueDate] = useState('')
 const [currency, setCurrency] = useState('$')
- 
+const [notes, setNotes] = useState('')
 return (
   <>
     <button onClick={exportPDF} className="export-btn">
@@ -115,7 +115,15 @@ return (
         currency={currency}
       />
       
-      <InvoiceFooter lineItems={lineItems} currency={currency} />
+      <InvoiceFooter 
+      lineItems={lineItems}
+       currency={currency}
+       notes={notes}
+       onNotesChange={setNotes}
+       
+       />
+      
+  
     </div>
   </>
 )

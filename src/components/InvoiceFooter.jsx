@@ -1,5 +1,5 @@
 import React from 'react';
-function InvoiceFooter({ lineItems, currency }) {
+function InvoiceFooter({ lineItems, currency, notes, onNotesChange  }) {
   const subtotal = lineItems.reduce((sum, item) => {
     return sum + (item.qty * item.price);
   }, 0);
@@ -32,9 +32,18 @@ function InvoiceFooter({ lineItems, currency }) {
          onClick={() => alert(`Processing payment of ${currency}${grandTotal.toFixed(2)}…`)}
         >
          Pay Now
-        </button>
+      </button>
 
-
+        <div className="notes-section">
+      <h4>Notes / Payment Terms</h4>
+       <textarea
+       className="notes-input"
+       placeholder="e.g. Payment due within 14 days. Bank transfer to Acct #1234..."
+       value={notes}
+       onChange={e => onNotesChange(e.target.value)}
+     />
+    </div>
+       
     </div>
   );
 }
