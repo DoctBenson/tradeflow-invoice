@@ -54,7 +54,7 @@ function InvoiceTable({
                     <input
                       type="number"
                       value={item.qty}
-                      onChange={(e) => onUpdateItem(item.id, 'qty', parseInt(e.target.value) || 0)}
+                      onChange={(e) => onUpdateItem(item.id, 'qty',(e.target.value))}
                       style={{ width: '60px' }}
                     />
 
@@ -78,7 +78,7 @@ function InvoiceTable({
                     <input
                       type="number"
                       value={item.price}
-                      onChange={(e) => onUpdateItem(item.id, 'price', parseFloat(e.target.value) || 0)}
+                      onChange={(e) => onUpdateItem(item.id, 'price',(e.target.value))}
                       style={{ width: '100px' }}
                     />
                   ) : (

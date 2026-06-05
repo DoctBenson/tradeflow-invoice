@@ -1,8 +1,8 @@
 import React from 'react';
 function InvoiceFooter({ lineItems, currency, notes, onNotesChange  }) {
   const subtotal = lineItems.reduce((sum, item) => {
-    return sum + (item.qty * item.price);
-  }, 0);
+  return sum + (parseInt(item.qty) || 0) * (parseFloat(item.price) || 0)
+}, 0);
 
   const taxRate = 0.10;
   const taxAmount = subtotal * taxRate;
